@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./views/Home";
+import Characters from "./views/Characters";
+import Planets from "./views/Planets";
+import Films from "./views/Films";
+import UserPageTemplate from "./templates/UserPageTemplate";
+import { paths } from "./utils/paths";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <UserPageTemplate>
+      <Navbar />
+      <Switch>
+        <Route exact path={paths.home}>
+          <Home />
+        </Route>
+        <Route exact path={paths.characters}>
+          <Characters />
+        </Route>
+        <Route exact path={paths.planets}>
+          <Planets />
+        </Route>
+        <Route exact path={paths.films}>
+          <Films />
+        </Route>
+      </Switch>
+    </UserPageTemplate>
+  </BrowserRouter>
+);
 
 export default App;
