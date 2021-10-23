@@ -6,7 +6,7 @@ const StyledNavbarWrapper = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #ffe600;
+  background-color: #fff595;
   width: 100%;
   height: 80px;
   display: flex;
@@ -16,7 +16,7 @@ const StyledNavbarWrapper = styled.nav`
 
 const StyledMenuLinks = styled.div`
   text-decoration: none;
-  color: black;
+  color: #25292e;
   font-weight: 600;
   margin-left: 40px;
 `;
