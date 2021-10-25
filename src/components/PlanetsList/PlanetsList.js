@@ -1,24 +1,21 @@
+import React from "react";
 import useListLogic from "../../Hooks/useListLogic";
-// import useFetch from "../../Hooks/useFetch";
-// import styled from "styled-components";
 import SingleCharacterCard from "../SingleCharacterCard/SingleCharacterCard";
 
-const CharactersList = () => {
+const PlanetsList = () => {
   const {
-    data: characters,
+    data: planets,
     prevPage,
     nextPage,
     isLoading,
     canNextPage,
     canPrevPage,
-  } = useListLogic("https://swapi.dev/api/people/");
-
-  if (isLoading) return <div>ładuje dane</div>;
+  } = useListLogic("https://swapi.dev/api/planets/");
 
   return (
-    <>
-      {characters &&
-        characters.map((singleCharacter) => {
+    <div>
+      {planets &&
+        planets.map((singleCharacter) => {
           const { name } = singleCharacter;
           return (
             <SingleCharacterCard name={name} key={name}></SingleCharacterCard>
@@ -30,8 +27,8 @@ const CharactersList = () => {
       <button onClick={nextPage} disabled={!canNextPage}>
         {">"}
       </button>
-    </>
+    </div>
   );
 };
 
-export default CharactersList;
+export default PlanetsList;
