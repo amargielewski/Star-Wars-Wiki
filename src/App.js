@@ -7,10 +7,13 @@ import Planets from "./views/Planets";
 import Films from "./views/Films";
 import UserPageTemplate from "./templates/UserPageTemplate";
 import { paths } from "./utils/paths";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => (
   <BrowserRouter>
     <UserPageTemplate>
+      <ToastContainer position="bottom-left" />
       <Navbar />
       <Switch>
         <Route exact path={paths.home}>
