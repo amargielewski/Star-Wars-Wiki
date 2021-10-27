@@ -6,7 +6,6 @@ import BoxTemplate from "../templates/BoxTemplate";
 const Planets = () => {
   return (
     <MainTemplate>
-      <div>Planets</div>
       <BoxTemplate>
         <PlanetsList />
       </BoxTemplate>

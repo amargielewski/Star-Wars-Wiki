@@ -5,7 +5,6 @@ import BoxTemplate from "../templates/BoxTemplate";
 const Films = () => {
   return (
     <MainTemplate>
-      <div>Films</div>
       <BoxTemplate>
         <FilmsList />
       </BoxTemplate>

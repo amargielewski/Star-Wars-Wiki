@@ -5,9 +5,12 @@ import styled from "styled-components";
 import PlanetsDetails from "../components/PlanetsDetails/PlanetsDetails";
 import FilmsDetails from "../components/FilmsDetails/FilmsDetails";
 import CharacterDetails from "../components/CharacterDetails/CharacterDetails";
+import LoadingBox from "../components/LoadingBox/LoadingBox";
 
 const StyledWrapper = styled.div`
-  margin-top: 150px;
+  width: 700px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
   justify-content: center;
 `;
@@ -16,6 +19,7 @@ const StyledListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const DetailsPage = ({ url }) => {
@@ -30,7 +34,7 @@ const DetailsPage = ({ url }) => {
       });
   }, [id, url, type]);
 
-  if (!data) return <div>Loading</div>;
+  if (!data) return <LoadingBox />;
 
   return (
     <StyledWrapper>

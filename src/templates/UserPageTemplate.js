@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   padding-top: 80px;
 `;
 

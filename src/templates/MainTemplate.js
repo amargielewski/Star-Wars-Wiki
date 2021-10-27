@@ -5,8 +5,8 @@ import styled from "styled-components";
 const StyledWrapper = styled.div`
   max-width: 1100px;
   width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
+  height: 800px;
+  margin: 20px auto;
   display: flex;
   align-items: center;
   flex-direction: column;

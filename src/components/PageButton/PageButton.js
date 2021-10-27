@@ -4,16 +4,26 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
   border: none;
-  background-color: #fff595;
-  color: #25292e;
+  background-color: #f9d71c;
+  color: black;
   width: 200px;
   height: 60px;
   border-radius: 10px;
   font-size: 20px;
   cursor: pointer;
 
+  :hover {
+    transition: transform 0.15s linear;
+    transform: scale(1.2);
+    font-weight: 400;
+  }
+
   :disabled {
-    opacity: 0.3;
+    opacity: 0.2;
+    :hover {
+      transition: none;
+      transform: none;
+    }
   }
 `;
 

@@ -3,21 +3,26 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
+  margin-top: 20px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 70px;
+  background-color: #f9d71c;
 
-  justify-content: space-between;
+  border-radius: 10px;
 `;
 
 const StyledTitle = styled.p`
-  font-size: 20px;
-  font-weight: 600;
-  padding-bottom: 15px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 700;
 `;
 
 const StyledContent = styled.p`
-  padding-left: 20px;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 25px;
+
+  font-weight: 500;
 `;
 
 const DetailsListItem = ({ title, value }) => {

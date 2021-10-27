@@ -6,7 +6,6 @@ import MainTemplate from "../templates/MainTemplate";
 const Characters = () => {
   return (
     <MainTemplate>
-      <div>Characters</div>
       <BoxTemplate>
         <CharactersList />
       </BoxTemplate>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Card from "../Card/Card";
 import BoxTemplate from "../../templates/BoxTemplate";
 import PageButton from "../PageButton/PageButton";
+import LoadingBox from "../LoadingBox/LoadingBox";
 import { paths } from "../../utils/paths";
 
 const StyledContainer = styled.div`
@@ -19,18 +20,18 @@ const CharactersList = () => {
   const { data, prevPage, nextPage, isLoading, canNextPage, canPrevPage } =
     useListLogic("https://swapi.dev/api/people/");
 
-  if (isLoading) return <div>ładuje dane</div>;
+  if (isLoading) return <LoadingBox />;
 
   return (
     <StyledContainer>
+      {isLoading && <LoadingBox />}
       <BoxTemplate>
-        {data &&
-          data.length &&
+        {data?.length > 0 &&
           data.map(({ name, id }) => (
             <Card path={paths.details("people", id)} name={name} key={id} />
           ))}
       </BoxTemplate>
-      {data && data.length && (
+      {data?.length > 0 && (
         <StyledButtonContainer>
           <PageButton onClick={prevPage} disabled={!canPrevPage}>
             Prev Page

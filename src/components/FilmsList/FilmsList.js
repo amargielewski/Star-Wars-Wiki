@@ -4,6 +4,7 @@ import Card from "../Card/Card";
 import styled from "styled-components";
 import PageButton from "../PageButton/PageButton";
 import BoxTemplate from "../../templates/BoxTemplate";
+import LoadingBox from "../LoadingBox/LoadingBox";
 import { paths } from "../../utils/paths";
 
 const StyledContainer = styled.div`
@@ -17,32 +18,31 @@ const StyledButtonContainer = styled.div`
 `;
 
 const FilmsList = () => {
-  const {
-    data,
-    prevPage,
-    nextPage,
-    // isLoading,
-    canNextPage,
-    canPrevPage,
-  } = useListLogic("https://swapi.dev/api/films/");
+  const { data, prevPage, nextPage, isLoading, canNextPage, canPrevPage } =
+    useListLogic("https://swapi.dev/api/films/");
+
+  if (!data) return <LoadingBox />;
 
   return (
     <StyledContainer>
+      {isLoading && <LoadingBox />}
       <BoxTemplate>
-        {data &&
+        {data?.length > 0 &&
           data.map(({ title, id }) => (
             <Card path={paths.details("films", id)} name={title} key={title} />
           ))}
       </BoxTemplate>
-      <StyledButtonContainer>
-        <PageButton onClick={prevPage} disabled={!canPrevPage}>
-          Prev Page
-        </PageButton>
+      {data?.length > 0 && (
+        <StyledButtonContainer>
+          <PageButton onClick={prevPage} disabled={!canPrevPage}>
+            Prev Page
+          </PageButton>
 
-        <PageButton onClick={nextPage} disabled={!canNextPage}>
-          Next Page
-        </PageButton>
-      </StyledButtonContainer>
+          <PageButton onClick={nextPage} disabled={!canNextPage}>
+            Next Page
+          </PageButton>
+        </StyledButtonContainer>
+      )}
     </StyledContainer>
   );
 };

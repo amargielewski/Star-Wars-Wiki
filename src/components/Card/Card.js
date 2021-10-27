@@ -15,16 +15,19 @@ const StyledWrapper = styled.div`
   align-items: center;
   transition: 0.2s;
   text-decoration: none;
+  background-color: #f9d71c;
 
   :hover {
-    background-color: lightgray;
-    transition: transform 0.2s linear;
+    background-color: #fffecf;
+
+    transition: transform 0.15s linear;
     transform: scale(1.05);
   }
 `;
 
 const StyledName = styled.h2`
-  color: #25292e;
+  font-size: 30px;
+  color: black;
 `;
 
 const Card = ({ name, path }) => {
