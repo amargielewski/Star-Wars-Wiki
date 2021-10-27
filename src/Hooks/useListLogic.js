@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 
 const useListLogic = (url) => {
@@ -26,8 +27,6 @@ const useListLogic = (url) => {
     fetch(`${url}?page=${page}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-
         setIsLoading(false);
         if (data.detail) {
           notifyErorr(data.detail);
@@ -38,7 +37,12 @@ const useListLogic = (url) => {
         if (data.previous) setCanPrevPage(true);
         else setCanPrevPage(false);
 
-        setData(data.results);
+        const results = data.results.map((item) => ({
+          ...item,
+          id: item.url.replace(url, "").replace("/", ""),
+        }));
+
+        setData(results);
       })
       .catch(() => {
         setIsLoading(false);
@@ -53,6 +57,10 @@ const useListLogic = (url) => {
     canNextPage,
     canPrevPage,
   };
+};
+
+useListLogic.propTypes = {
+  url: PropTypes.string.isRequired,
 };
 
 export default useListLogic;

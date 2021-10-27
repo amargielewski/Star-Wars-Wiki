@@ -1,33 +1,49 @@
 import React from "react";
 import useListLogic from "../../Hooks/useListLogic";
-import SingleCharacterCard from "../SingleCharacterCard/SingleCharacterCard";
+import Card from "../Card/Card";
+import styled from "styled-components";
+import PageButton from "../PageButton/PageButton";
+import BoxTemplate from "../../templates/BoxTemplate";
+import LoadingBox from "../LoadingBox/LoadingBox";
+import { paths } from "../../utils/paths";
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const StyledButtonContainer = styled.div`
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+`;
 
 const FilmsList = () => {
-  const {
-    data: films,
-    prevPage,
-    nextPage,
-    isLoading,
-    canNextPage,
-    canPrevPage,
-  } = useListLogic("https://swapi.dev/api/films/");
+  const { data, prevPage, nextPage, isLoading, canNextPage, canPrevPage } =
+    useListLogic("https://swapi.dev/api/films/");
+
+  if (!data) return <LoadingBox />;
 
   return (
-    <>
-      {films &&
-        films.map((singleCharacter) => {
-          const { title } = singleCharacter;
-          return (
-            <SingleCharacterCard name={title} key={title}></SingleCharacterCard>
-          );
-        })}
-      <button onClick={prevPage} disabled={!canPrevPage}>
-        {"<"}
-      </button>
-      <button onClick={nextPage} disabled={!canNextPage}>
-        {">"}
-      </button>
-    </>
+    <StyledContainer>
+      {isLoading && <LoadingBox />}
+      <BoxTemplate>
+        {data?.length > 0 &&
+          data.map(({ title, id }) => (
+            <Card path={paths.details("films", id)} name={title} key={title} />
+          ))}
+      </BoxTemplate>
+      {data?.length > 0 && (
+        <StyledButtonContainer>
+          <PageButton onClick={prevPage} disabled={!canPrevPage}>
+            Prev Page
+          </PageButton>
+
+          <PageButton onClick={nextPage} disabled={!canNextPage}>
+            Next Page
+          </PageButton>
+        </StyledButtonContainer>
+      )}
+    </StyledContainer>
   );
 };
 

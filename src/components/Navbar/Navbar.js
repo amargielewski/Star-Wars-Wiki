@@ -6,17 +6,18 @@ const StyledNavbarWrapper = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff595;
+  background-color: #f9d71c;
   width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  color: black;
 `;
 
 const StyledMenuLinks = styled.div`
   text-decoration: none;
-  color: #25292e;
+  color: #000000;
   font-weight: 600;
   margin-left: 40px;
 `;

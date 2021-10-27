@@ -9,6 +9,7 @@ import UserPageTemplate from "./templates/UserPageTemplate";
 import { paths } from "./utils/paths";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DetailsPage from "./views/DetailsPage";
 
 const App = () => (
   <BrowserRouter>
@@ -19,14 +20,18 @@ const App = () => (
         <Route exact path={paths.home}>
           <Home />
         </Route>
-        <Route exact path={paths.characters}>
+        <Route path={paths.characters}>
           <Characters />
         </Route>
-        <Route exact path={paths.planets}>
+        <Route path={paths.planets}>
           <Planets />
         </Route>
-        <Route exact path={paths.films}>
+        <Route path={paths.films}>
           <Films />
+        </Route>
+
+        <Route path={paths.details(":type", ":id")}>
+          <DetailsPage url="https://swapi.dev/api/" />
         </Route>
       </Switch>
     </UserPageTemplate>
