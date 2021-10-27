@@ -3,5 +3,5 @@ export const paths = {
   characters: "/characters",
   films: "/films",
   planets: "/planets",
-  character_details: (id) => `/characters/${id}`,
+  details: (type, id) => `/details/${type}/${id}`,
 };

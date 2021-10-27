@@ -1,11 +1,16 @@
 import React from "react";
 import PlanetsList from "../components/PlanetsList/PlanetsList";
+import MainTemplate from "../templates/MainTemplate";
+import BoxTemplate from "../templates/BoxTemplate";
 
 const Planets = () => {
   return (
-    <div>
-      <PlanetsList />
-    </div>
+    <MainTemplate>
+      <div>Planets</div>
+      <BoxTemplate>
+        <PlanetsList />
+      </BoxTemplate>
+    </MainTemplate>
   );
 };
 

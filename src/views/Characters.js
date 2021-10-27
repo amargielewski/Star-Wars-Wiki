@@ -1,15 +1,15 @@
 import React from "react";
 import CharactersList from "../components/CharactersList/CharactersList";
-import GridTemplate from "../templates/GridTemplate";
+import BoxTemplate from "../templates/BoxTemplate";
 import MainTemplate from "../templates/MainTemplate";
 
 const Characters = () => {
   return (
     <MainTemplate>
       <div>Characters</div>
-      <GridTemplate>
+      <BoxTemplate>
         <CharactersList />
-      </GridTemplate>
+      </BoxTemplate>
     </MainTemplate>
   );
 };
